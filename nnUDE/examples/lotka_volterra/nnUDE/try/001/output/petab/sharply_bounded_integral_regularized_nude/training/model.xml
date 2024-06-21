@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="model" name="model">
+    <listOfCompartments>
+      <compartment id="Compartment" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="prey" compartment="Compartment" initialAmount="0.44249296" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="predator" compartment="Compartment" initialAmount="4.6280594" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="alpha_" name="alpha_" value="1.3" constant="true"/>
+      <parameter id="beta_" name="beta_" value="0.9" constant="true"/>
+      <parameter id="gamma_" name="gamma_" value="0.8" constant="true"/>
+      <parameter id="delta_" name="delta_" value="1.8" constant="true"/>
+      <parameter id="prey_birth" name="prey_birth" constant="false"/>
+      <parameter id="prey_predation" name="prey_predation" constant="false"/>
+      <parameter id="predator_predation" name="predator_predation" constant="false"/>
+      <parameter id="predator_death" name="predator_death" constant="false"/>
+      <parameter id="rhs_prey__mechanistic" value="0" units="dimensionless" constant="false"/>
+      <parameter id="rhs_prey__universal" value="0" units="dimensionless" constant="false"/>
+      <parameter id="rhs_predator__mechanistic" value="0" units="dimensionless" constant="false"/>
+      <parameter id="rhs_predator__universal" value="0" units="dimensionless" constant="false"/>
+      <parameter id="neural_network_nn1__layer_0__node__0__bias__" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__0__weight__predator" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__0__weight__prey" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__0__formula__" value="0" units="dimensionless" constant="false"/>
+      <parameter id="neural_network_nn1__layer_0__node__1__bias__" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__1__weight__predator" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__1__weight__prey" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_0__node__1__formula__" value="0" units="dimensionless" constant="false"/>
+      <parameter id="neural_network_nn1__layer_1__node__0__bias__" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__0" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__1" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__0__formula__" value="0" units="dimensionless" constant="false"/>
+      <parameter id="neural_network_nn1__layer_1__node__1__bias__" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__0" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__1" value="0" units="dimensionless" constant="true"/>
+      <parameter id="neural_network_nn1__layer_1__node__1__formula__" value="0" units="dimensionless" constant="false"/>
+      <parameter id="predator__U__neural_network_nn1__layer_1__node__0" value="0" units="dimensionless" constant="false"/>
+      <parameter id="prey__U__neural_network_nn1__layer_1__node__1" value="0" units="dimensionless" constant="false"/>
+      <parameter id="nUDE_universal_magnitude" value="0" units="dimensionless" constant="false"/>
+      <parameter id="nUDE_universal_integral" value="0" units="dimensionless" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <rateRule variable="prey">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> rhs_prey__mechanistic </ci>
+            <ci> rhs_prey__universal </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <rateRule variable="predator">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> rhs_predator__mechanistic </ci>
+            <ci> rhs_predator__universal </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <assignmentRule variable="prey_birth">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> alpha_ </ci>
+            <ci> prey </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="prey_predation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <ci> beta_ </ci>
+            </apply>
+            <ci> prey </ci>
+            <ci> predator </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="predator_predation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> delta_ </ci>
+            <ci> prey </ci>
+            <ci> predator </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="predator_death">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <ci> gamma_ </ci>
+            </apply>
+            <ci> predator </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rhs_prey__mechanistic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> prey_birth </ci>
+            <ci> prey_predation </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rhs_prey__universal">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <cn type="integer"> 0 </cn>
+            <ci> prey__U__neural_network_nn1__layer_1__node__1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rhs_predator__mechanistic">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> predator_predation </ci>
+            <ci> predator_death </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rhs_predator__universal">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <cn type="integer"> 0 </cn>
+            <ci> predator__U__neural_network_nn1__layer_1__node__0 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="neural_network_nn1__layer_0__node__0__formula__">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <tanh/>
+            <apply>
+              <plus/>
+              <ci> neural_network_nn1__layer_0__node__0__bias__ </ci>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_0__node__0__weight__predator </ci>
+                <ci> predator </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_0__node__0__weight__prey </ci>
+                <ci> prey </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="neural_network_nn1__layer_0__node__1__formula__">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <tanh/>
+            <apply>
+              <plus/>
+              <ci> neural_network_nn1__layer_0__node__1__bias__ </ci>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_0__node__1__weight__predator </ci>
+                <ci> predator </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_0__node__1__weight__prey </ci>
+                <ci> prey </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="neural_network_nn1__layer_1__node__0__formula__">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> neural_network_nn1__layer_1__node__0__bias__ </ci>
+            <apply>
+              <times/>
+              <ci> neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__0 </ci>
+              <ci> neural_network_nn1__layer_0__node__0__formula__ </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__1 </ci>
+              <ci> neural_network_nn1__layer_0__node__1__formula__ </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="neural_network_nn1__layer_1__node__1__formula__">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> neural_network_nn1__layer_1__node__1__bias__ </ci>
+            <apply>
+              <times/>
+              <ci> neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__0 </ci>
+              <ci> neural_network_nn1__layer_0__node__0__formula__ </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__1 </ci>
+              <ci> neural_network_nn1__layer_0__node__1__formula__ </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="predator__U__neural_network_nn1__layer_1__node__0">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <tanh/>
+              <apply>
+                <times/>
+                <cn type="integer"> 10 </cn>
+                <ci> predator </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> neural_network_nn1__layer_1__node__0__bias__ </ci>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__0 </ci>
+                <ci> neural_network_nn1__layer_0__node__0__formula__ </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_1__node__0__weight__neural_network_nn1__layer_0__node__1 </ci>
+                <ci> neural_network_nn1__layer_0__node__1__formula__ </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="prey__U__neural_network_nn1__layer_1__node__1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <tanh/>
+              <apply>
+                <times/>
+                <cn type="integer"> 10 </cn>
+                <ci> prey </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> neural_network_nn1__layer_1__node__1__bias__ </ci>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__0 </ci>
+                <ci> neural_network_nn1__layer_0__node__0__formula__ </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> neural_network_nn1__layer_1__node__1__weight__neural_network_nn1__layer_0__node__1 </ci>
+                <ci> neural_network_nn1__layer_0__node__1__formula__ </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="nUDE_universal_magnitude">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <root/>
+            <degree>
+              <cn type="integer"> 2 </cn>
+            </degree>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> rhs_prey__universal </ci>
+                <ci> rhs_prey__universal </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> rhs_predator__universal </ci>
+                <ci> rhs_predator__universal </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="nUDE_universal_integral">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> nUDE_universal_magnitude </ci>
+        </math>
+      </rateRule>
+    </listOfRules>
+  </model>
+</sbml>

@@ -1,0 +1,10 @@
+observableId	observableFormula	noiseFormula	noiseDistribution
+observable_predator	predator	1	normal
+observable_prey	prey	1	normal
+nUDE_muted__prey	beta_ * prey * predator	1	
+nUDE_muted__predator	delta_ * prey * predator	1	
+tracked_f_0	rhs_prey__mechanistic	1	
+tracked_f_1	rhs_predator__mechanistic	1	
+tracked_U_0	rhs_prey__universal	1	
+tracked_U_1	rhs_predator__universal	1	
+observable__nUDE_universal_integral	nUDE_universal_integral	100.0	

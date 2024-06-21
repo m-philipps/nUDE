@@ -1,0 +1,8 @@
+model_id	nonnegatives	negatives	infinite_fvals	total	min_x	true_negatives-0.0001
+ude	186	346	468	1000	-6.369765581137776	345
+nude	380	139	481	1000	-1.9481226986982616e-08	0
+integral_regularized_nude	388	131	481	1000	-3.442179105971348e-08	0
+bounded_nude	439	93	468	1000	-1.1844250800592755e-08	0
+sharply_bounded_nude	187	345	468	1000	-0.11634766636342053	9
+bounded_integral_regularized_nude	448	85	467	1000	-1.7758438218409715e-08	0
+sharply_bounded_integral_regularized_nude	181	351	468	1000	-0.21892868146624958	9
