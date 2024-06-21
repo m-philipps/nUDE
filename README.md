@@ -10,7 +10,7 @@ We additionally used the package provided in `nnUDE`. From inside the `nnUDE` di
 
 The example models from the paper are provided in `examples`. Some are derived from the PEtab Benchmark Collection [3].
 
-[1] arxiv preprint https://arxiv.org/abs/2406.14246 
-[2] https://amici.readthedocs.io/en/latest/python_installation.html 
-[3] https://github.com/Benchmarking-Initiative/Benchmark-Models-PEtab 
+[1] arxiv preprint https://arxiv.org/abs/2406.14246  
+[2] https://amici.readthedocs.io/en/latest/python_installation.html  
+[3] https://github.com/Benchmarking-Initiative/Benchmark-Models-PEtab  
 
