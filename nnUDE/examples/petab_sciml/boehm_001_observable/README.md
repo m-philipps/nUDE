@@ -13,7 +13,7 @@ $$
 
 ## Data-Driven Model Structure
 
-The input to the FNN are all eight dynamic species, the output is the `rSTAT5A_rel_obs` placeholder parameter. Specification:
+The input to the FNN are all eight dynamic species, the output is the `net1_output1` placeholder parameter. Specification:
 
 | LayerID | Layer                                                  | Activation Function |
 |---------|--------------------------------------------------------|---------------------|
